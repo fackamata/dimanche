@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce index{% endblock %}
+
+{% block body %}
+    <h1>Annonce</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>DatePublication</th>
+                <th>Active</th>
+                <th>NombreVue</th>
+                <th>User</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td>{{ annonce.titre }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.datePublication ? annonce.datePublication|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ annonce.active ? 'Yes' : 'No' }}</td>
+                <td>{{ annonce.nombreVue }}</td>
+                <td>{{ annonce.user }}</td>
+                <td>
+                    {% if annonce.photo %}
+                        <img src="{{ annonce.photo }}" alt="{{ annonce.titre }}" class="img-fluid" />
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('annonce_show', {'id': annonce.id}) }}">Détail</a>
+                    {% if username == annonce.user or is_granted('ROLE_ADMIN') %}
+                        <a class="btn btn-warning" href="{{ path('annonce_edit', {'id': annonce.id}) }}">Modifier</a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucunne annonce</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-info" href="{{ path('annonce_new') }}">Create new</a>
+{% endblock %}

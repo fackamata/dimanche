@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="{{path("annonce_index")}}">
+                        <img class="me-5" id="logoHeader_Samm" src=" {{asset("img/logo_proj.png")}} " alt="logo">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{path("annonce_index")}}">Annonces</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{path("conseil_index")}}">Conseils</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{path("apropos")}}">À propos</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{path("contact")}}">Contact</a>
+                                </li>
+                                {% if app.user %}
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                                <li class="nav-item"></li>
+                                                <a class="nav-link" href="{{ path('admin_index') }}">
+                                                        Admin
+                                                </a>
+                                        </li>
+                                {% else %}
+                                        <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('app_compte', {'id': app.user.id}) }}">
+                                                        Mon Compte
+                                                </a>
+                                        </li>
+                                {% endif %}
+                                <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('app_logout') }}">
+                                                Déconnexion
+                                        </a>
+                                </li>
+                                        {% else %}
+                                                <li class="nav-item"></li>
+                                                <a class="nav-link" href="{{ path('app_login') }}">
+                                                        Connexion
+                                                </a>
+                                        </li>
+
+                                {% endif %}
+                        </ul>
+                </div>
+        </div>
+</nav>

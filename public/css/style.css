@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Ruda&display=swap");
+:root {
+  --notrevert: #69AF07;
+  --notrebrown: #483B33;
+  --notreMarronClair: #9F8447;
+  --notreLightBackground: #F6F3EC;
+}
+
+ul a {
+  color: var(--notreMarronClair) !important;
+}
+
+ul a:hover {
+  color: var(--notrevert) !important;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+nav {
+  margin-bottom: 1rem;
+}
+
+#logoHeader_Samm {
+  width: 70px;
+  height: 50px;
+}
+
+.LogoForm_Samm {
+  text-align: center;
+}
+
+h1:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+h1 {
+  font-family: 'Ruda', sans-serif;
+  text-align: center;
+  color: var(--notrevert);
+}
+
+* {
+  font-family: 'Ruda', sans-serif;
+}
+
+
+.LogoResaux_Samm {
+  width: 45px;
+  height: 45px;
+}
+
+#imgLogin {
+  width: 30vh;
+  height: auto;
+}
+
+footer {
+  padding-top: 1rem;
+  margin-top: 4vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-SAMM {
+  width: 50vw;
+  height: auto;
+  margin: auto;
+}
+
+.comment {
+  border: 1px solid var(--notrevert);
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.btn-vert-connexion_Samm {
+  background-color: var(--notrevert);
+  color: var(--notreLightBackground);
+}
+
+.btn-vert-connexion_Samm:hover {
+  background-color: var(--notrevert);
+  color: var(--notrebrown);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.btn-marron_Samm {
+  background-color: var(--notreMarronClair);
+  color: var(--notreLightBackground);
+}
+
+.btn-marron_Samm:hover {
+  background-color: var(--notreMarronClair);
+  color: var(--notrevert);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.btn-vert-creation_Samm {
+  background-color: white !important;
+  border: solid var(--notrevert);
+  color: var(--notrebrown);
+  text-decoration: none;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.btn-vert-creation_Samm:hover {
+  color: var(--notreLightBackground);
+}
+
+.btn-vert-creation_Samm:hover {
+  background-color: var(--notrevert) !important;
+}
+
+.photo-container img {
+  max-width: 1100px;
+  margin: 20px auto;
+}
+
+#image_potager1 {
+  max-width: 95%;
+}
+
+#image_potager2 {
+  max-width: 95%;
+}
+
+h2 {
+  color: var(--notreMarronClair);
+}
+
+@media screen and (max-width: 900px) {
+  .form-SAMM {
+    width: 95vw;
+    height: auto;
+    margin: auto;
+  }
+  #logoHeader_Samm {
+    width: 50px;
+    height: 35px;
+  }
+}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+<div class="form-SAMM">
+    <div class="container"></div>
+        <h1>Formulaire de contact</h1>
+
+        {{ form_start(form)}} {# <form action="" method"> #}
+            <div class="row">
+                <div class="col-md-6">               
+                    {{form_row(form.nom)}} {# le nom du champs #}                   
+                </div>
+                <div class="col-md-6">               
+                    {{form_row(form.prenom)}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{form_row(form.objet ) }}
+                    
+                </div>
+                    <div class="col-md-6">
+                    {{form_row(form.email)}}
+                </div>
+            </div>
+            <div class="row">
+                {# <div class="col"> #}
+                    {{form_row(form.message)}}
+                {# </div> #}
+            </div>
+            
+        {{ form_end(form)}} 
+    </div>
+</div>
+{% endblock %}

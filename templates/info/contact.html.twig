@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous{% endblock %}
+
+
+{% block body %}
+<form class="container">
+  <h1>Contactez-nous</h1>
+  <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="form_name">Nom *</label>
+            <input id="form_name" type="text" name="name" class="form-control" placeholder="ex : Dupont" required="required"
+             data-error="Le nom est obligatoire.">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="form_lastname">Prénom *</label>
+            <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="ex : Jean" required="required" 
+            data-error="Le prénom est obligatoire.">
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+</div>
+<div class="row my-3">
+  <div class="col-md-6">
+      <div class="form-group">
+          <label for="email_input">E-mail *</label>
+          <input id="email_input" type="text" name="name" class="form-control" placeholder="ex : jean.dupont@gmail.com" 
+          required="required" data-error="L'e-mail est obligatoire.">
+          <div class="help-block with-errors"></div>
+      </div>
+  </div>
+  <div class="col-md-6">
+      <div class="form-group">
+          <label for="form_lastname">Objet *</label>
+          <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="ex : votre problème à résoudre" 
+          required="required" data-error="L'objet est obligatoire.">
+          <div class="help-block with-errors"></div>
+      </div>
+  </div>
+</div>
+  <div class="mb-3">
+    <label for="texte_input" class="form-label">Entrer votre texte</label>
+    <textarea class="form-control" id="texte_input" rows="3"></textarea>
+  </div>
+</form>
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-vert-creation_Samm" href="#" role="button">Envoyer</a>
+</div>
+
+
+
+{% endblock %}

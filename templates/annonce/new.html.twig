@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Annonce{% endblock %}
+
+{% block body %}
+
+    <h1>Créer une nouvelle annonce</h1>
+
+    <form class="form-SAMM">
+        <div class="d-flex mb-2">
+            <a class="btn btn-outline-info me-2" href="javascript:history.back()">Retour</a>
+        </div>  
+        {{form(form)}}
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des annonces
+{% endblock %}
+
+{% block body %}
+	<h1>Les annonces</h1>
+	<a class="btn btn-outline-info ms-5" href="javascript:history.back()">Retour</a>
+	{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+		<a class="btn btn-outline-success" href="{{ path('annonce_new') }}">Créer une annonce</a>
+	{% endif %}
+
+	<section class="d-flex flex-wrap justify-content-around">
+		{% for annonce in annonces %}
+
+			<article class="card m-2" style="width: 300px;">
+				{% if annonce.photo %}
+					<a href="{{ path('annonce_show', {'id': annonce.id}) }}">
+						<img src="{{ annonce.photo }}" class="card-img-top" alt="{{ annonce.titre }}" class="img-fluid"/>
+					</a>
+				{% endif %}
+				<div class="card-body">
+					<h5 class="card-title">{{ annonce.titre }}</h5>
+					<div class="card-text">
+						<div class="d-flex justify-content-between">
+							<p>{{ annonce.ville }}</p>
+							<p>{{ annonce.nombreVue }} vues</p>
+						</div>
+					</div>
+					<a class="btn btn-vert-creation_Samm " href="{{ path('annonce_show', {'id': annonce.id}) }}">Détail</a>
+				</div>
+			</article>
+
+		{% else %}
+			<div>
+				<p>Aucune annonce</p>
+			</div>
+		{% endfor %}
+
+
+	</section>
+	
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+    <h1>Liste des messages</h1>
+    <div class="form-SAMM">
+        
+        <div class="table-responsive">
+            <table class="table table-hove">
+                <thead>
+                    <tr>
+                        {# <th>Content</th> #}
+                        <th class="d-none d-md-table-cell">Date</th>
+                        <th class="d-none d-lg-table-cell">Lu</th>
+                        <th>Expéditeur</th>
+                        <th class="d-none d-sm-table-cell">Annonce</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                {% if message.lu == false %}
+                    <tr class="bg-secondary">
+                {% else %}
+                    <tr class=" bg-light">
+                {% endif %}
+                        {# <td>{{ message.content | slice(0,30)}}...</td> #}
+                        <td class="d-none d-md-table-cell">{{ message.date ? message.date|date('d/m H:i') : '' }}</td>
+                        <td class="d-none d-lg-table-cell">{{ message.lu ? 'oui' : 'non' }}</td>
+                        <td>{{ message.sender }}</td>
+                        <td class="d-none d-sm-table-cell">{{ message.annonce }}</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('message_show', {'id': message.id}) }}">lire</a>
+                            {# <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a> #}
+                            {# <a href="{{ path('message_new') }}">Répondre</a> #}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">aucun message</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block body %}
+<h1>A propos de Tous-au-jardin</h1>
+<div class="container">
+    <div class="row my-4">
+        <div class="col-12 col-lg-6">
+            <h2 class="mb-lg-3">Tous-au-jardin met en relation :</h2>
+            
+            <p>ceux qui possèdent un terrain ou une partie jardin inutilisé et qui n'ont pas le temps ou 
+                la connaissance pour créer un potager</p>
+            <p>ceux qui n'ont pas de jardin mais souhaiteraient tout de même cultiver un potager</p>
+            
+            <p class="mt-lg-3">En échange le jardinier offre une partie de la récolte au propriétaire (en général autour de 20%) ou/et 
+                lui apprend la façon de conduire un potager.</p>
+        </div>
+
+
+        <div class="col-12 col-lg-6">
+            <img class=" rounded float-end" id="image_potager1" src="{{asset("img/image_potager1.jpg")}}" alt="potager">
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-12 col-lg-6 text-center mb-3">
+            <img class=" rounded float-start" id="image_potager2" src="{{asset("img/image_potager2.jpg")}}" alt="potager2">
+            
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2 class="mb-lg-3">Se faire plaisir et créer du lien social</h2>
+            <p>Cultiver un morceau de terre permet, très simplement, de s'extraire de ses préoccupations quotidiennes pour renouer avec 
+                le calme de la nature et le rythme des saisons. </p>
+            <p>C'est aussi le plaisir de manger des produits frais au goût incomparable et souvent l'occasion de partager un moment 
+                de détente en famille, d'échanger avec les "anciens" qui seront heureux de 
+                transmettre leur savoir ou de faire participer les enfants</p>
+        </div>
+    </div>
+
+    <h2>Faire des économies et prendre soin de sa santé</h2>
+    <p>S'occuper d'un potager, c'est aussi nourrir sa famille : on considère généralement un moyenne de 50 m2 de potager sont 
+        suffisants pour nourrir une personne. </p>
+    <p>Une parcelle de 200 m² (10 m X 20 m) permettra donc de nourrir régulièrement de 
+        façon saine une famille de 4 personnes.</p>
+    <h2>Vers l'autosuffisance locale</h2>
+    <p>En mangeant des fruits et légumes de saisons, produits localement par vos soins, vous proposez une alternative à 
+        l'agriculture intensive lointaine au bilan carbone désastreux. </p>
+        
+    <p>Cultiver son jardin est aujourd’hui un acte politique, disait Pierre Rabhi...
+        A son modeste niveau le projet participe à la quête d'indépendance et d'autonomie de chacun. 
+        Il s'agit aussi d'inciter chacun à ne pas laisser mourir les anciens potagers ou vergers.</p>
+</div>
+{% endblock %}

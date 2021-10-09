@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Annonce{% endblock %}
+
+{% block body %}
+    <h1>Modifier Annonce</h1>   
+
+    <form class="form-SAMM">
+        <div class="d-flex justify-content-between mb-2">
+            <a class="btn btn-outline-info me-2" href="javascript:history.back()">Retour</a>
+            <form method="post" action="{{ path('annonce_delete', {'id': annonce.id}) }}" onsubmit="return confirm('Etes-vous sûre de vouloir supprimer cette annonce ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annonce.id) }}">
+                <button class="btn btn-outline-danger">Suprimer</button>
+            </form>
+        </div>  
+        {{form(form)}}
+    </form>
+{% endblock %}

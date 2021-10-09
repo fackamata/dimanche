@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commentaires{% endblock %}
+
+{% block body %}
+    <h1>Liste des commentaires</h1>
+    
+<section class="form-SAMM">
+    <a class="btn btn-outline-info mb-2" href="javascript:history.back()">Retour</a>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Commentaire</th>
+                    <th class="d-none d-md-table-cell">Publié le :</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for avi in avis %}
+                <tr>
+                    <td>{{ avi.text | slice(0,30)}}...</td>
+                    <td class="d-none d-sm-table-cell">{{ avi.datePublication ? avi.datePublication|date('d/m/Y') : '' }}</td>
+                    <td>
+                        <a class="btn btn-outline-success" href="{{ path('avis_show', {'id': avi.id}) }}">Détail</a>
+                        {# <a class="btn btn-outline-warning" href="{{ path('avis_edit', {'id': avi.id}) }}">Modifier</a> #}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun commentaire</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+</section> 
+{% endblock %}

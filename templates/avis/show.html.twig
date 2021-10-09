@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaire{% endblock %}
+
+{% block body %}
+    <h1>Commentaire</h1>
+    <main class="form-SAMM">
+       <div class="d-flex justify-content-between">
+            <a class="btn btn-outline-info " href="javascript:history.back()">Retour</a>
+        
+        
+            <form method="post" action="{{ path('avis_delete', {'id': avi.id}) }}" onsubmit="return confirm('Etes-vous sûre de vouloir supprimer ce commentaire ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ avi.id) }}">
+                <button class="btn btn-outline-danger">{{ button_label|default('Supprimer') }}</button>
+            </form>
+       </div>
+    
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Texte</th>
+                    <td>{{ avi.text }}</td>
+                </tr>
+                <tr>
+                    <th>Date de publication</th>
+                    <td>{{ avi.datePublication ? avi.datePublication|date('d/m/Y') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    
+    
+        {# <a class="btn btn-vert-connexion_Samm mt-3" href="{{ path('avis_edit', {'id': avi.id}) }}">Modifier</a> #}
+    </main>
+
+{% endblock %}

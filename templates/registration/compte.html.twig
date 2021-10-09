@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+{% block body %}
+
+
+    <h1>{{ user.nom|capitalize }} {{ user.prenom|capitalize }}</h1>
+     
+    <section class="text-center mb-5">
+        {% if user.photo %}
+            <img src="{{user.photo}}" id="imgTable_Samm" alt="{{ user.nom }}">
+        {% else %}
+            <img src="{{asset("img/avatar-neutre.png")}}" class="img-fluid" alt="pas de photo">
+        {% endif %}
+
+        <p>Pseudo : {{user.username}}</p>
+        <p>Nom : {{user.nom}}</p>
+        <p>Prénom : {{user.prenom}}</p>
+        <p>E-mail : {{user.mail}}</p>
+    </section>
+    
+   <section class="d-flex justify-content-around my-3">
+        <a href="{{ path('app_edit', {'id': user.id}) }}" class="btn btn-vert-creation_Samm"> Modifier mes informations</a>
+        <a href="{{ path('app_annonce', {'id': user.id}) }}" class="btn btn-vert-creation_Samm">{{nbAnnonce}} annonces</a>
+        <a href="{{ path('app_conseil', {'id': user.id}) }}" class="btn btn-vert-creation_Samm">{{nbConseil}} conseils</a>  
+        <a href="{{ path('app_avis', {'id': user.id}) }}" class="btn btn-vert-creation_Samm">{{nbAvis}} commentaires</a>  
+        <a href="{{ path('app_message_recu', {'id': user.id}) }}" class="btn btn-vert-creation_Samm">
+            {% if msgNonLu > 0 %}
+                {{msgNonLu}} nouveaux messages 
+            {% else %}
+                message
+            {% endif %}
+            
+        </a>  
+   </section>
+   
+{% endblock %}

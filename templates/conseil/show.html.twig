@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conseil{% endblock %}
+
+{% block body %}
+    <h1>{{ conseil.titre }}</h1>
+
+    <main class="d-flex flex-column justify-content-center">
+        {% if conseil.photo %}
+        <div class="photo-container d-flex justify-content-center">
+            <img src="{{ conseil.photo }}" alt="{{ conseil.titre }}" class="rounded" />
+        </div>
+        {% endif %}
+        {#  on filtre conseil.description avec un raw pour nettoyer les balises HTML #}
+        <div class=" text-center mx-3 mx-md-5">{{ conseil.description|raw }}</div>
+
+        <div class="d-flex justify-content-around my-2">
+            <p>Date de publication : {{ conseil.datePublication ? conseil.datePublication|date('d/m/Y ') : '' }}</p>
+            <p>Publié par : {{ conseil.user }}</p>
+            <p>Nombre de vue : {{ conseil.nombreVue }}</p>
+        </div>
+
+        <div class='d-flex justify-content-around'>
+            <a class="btn btn-outline-info " href="javascript:history.back()">Retour</a>
+            {% if username == conseil.user or is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-outline-warning" href="{{ path('conseil_edit', {'id': conseil.id}) }}">Modifier</a>
+        
+                <form method="post" action="{{ path('conseil_delete', {'id': conseil.id}) }}" onsubmit="return confirm('Etes-vous sûre de vouloir supprimer cette conseil ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ conseil.id) }}">
+                    <button class="btn btn-outline-danger">Supprimer</button>
+                </form>
+            {% endif %}
+            {% if user != null %}
+            <a class="btn btn-outline-success" href="{{ path('avis_new', {'id': conseil.id}) }}">faire un commentaire</a>
+            {% endif %}
+        </div>
+
+        <section class="form-SAMM d-flex flex-column align-content-center">
+            {% for avi in avis %}
+                <article class="comment p-2">
+                    <div class="text-center">
+                        <p class="mb-2">{{avi.text}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div>publié par : {{avi.user}}</div>
+                        {# <div>note : {{avi.note}}</div> #}
+                        {% if username == avi.user or is_granted('ROLE_ADMIN') %}
+                        <form method="post" action="{{ path('avis_delete', {'id': avi.id}) }}" onsubmit="return confirm('Etes-vous sûre de vouloir supprimer ce commentaire ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ avi.id) }}">
+                            <button class="btn btn-outline-danger">X</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+
+</main>
+
+    
+{% endblock %}

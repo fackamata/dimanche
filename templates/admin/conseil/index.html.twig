@@ -1,0 +1,42 @@
+{% extends 'admin/admin.html.twig' %}
+
+
+{% block title %}Liste des conseils{% endblock %}
+
+{% block body %}
+    <h1>Liste des conseils</h1>
+    <div class="table-responsive">
+        <table class="table table-hover" id="myTable">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th class="d-none d-sm-table-cell">Description</th>
+                    <th class="d-none d-md-table-cell">Publié le</th>
+                    <th class="d-none d-sm-table-cell">Vues</th>
+                    <th class="d-none d-sm-table-cell">Utilisateur</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for conseil in conseils %}
+                <tr>
+                    <td>{{ conseil.titre }}</td>
+                    <td class="d-none d-sm-table-cell">{{ conseil.description| slice(0,30)}}...</td>
+                    <td class="d-none d-md-table-cell">{{ conseil.datePublication ? conseil.datePublication|date('d/m/Y') : '' }}</td>
+                    <td class="d-none d-sm-table-cell">{{ conseil.nombreVue }}</td>
+                    <td class="d-none d-sm-table-cell">{{ conseil.user }}</td>
+                    <td>
+                        <a class="btn btn-outline-success" href="{{ path('conseil_show', {'id': conseil.id}) }}">Détail</a>
+                        <a class="btn btn-outline-warning" href="{{ path('conseil_edit', {'id': conseil.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucun conseil</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

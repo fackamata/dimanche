@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les conseils{% endblock %}
+
+{% block body %}
+    <h1>Les conseils</h1>
+    
+        <a class="btn btn-outline-info ms-5" href="javascript:history.back()">Retour</a>
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-outline-success" href="{{ path('conseil_new') }}">Créer un conseil</a>
+        {% endif %}
+
+        <main class="d-flex flex-wrap justify-content-around">
+
+
+            {% for conseil in conseils %}
+
+            <article class="card m-2" style="width: 300px;">
+                {% if conseil.photo %}
+                    <a href="{{ path('conseil_show', {'id': conseil.id}) }}">
+                        <img src="{{ conseil.photo }}" class="card-img-top" alt="{{ conseil.titre }}" class="img-fluid" />
+                    </a>
+                {% endif %}
+                <div class="card-body">
+                <h5 class="card-title">{{ conseil.titre }}</h5>
+                <div class="card-text">
+                    <div class="d-flex justify-content-between">
+                        <p>{{ conseil.user }}</p>
+                        <p>{{ conseil.nombreVue }} vues</p>
+                    </div>
+                </div>
+                <a class="btn btn-vert-creation_Samm" href="{{ path('conseil_show', {'id': conseil.id}) }}">Détail</a>
+                </div>
+            </article>
+            
+            {% else %}
+                <div>
+                    <p>Aucun conseil</p>
+                </div>
+            {% endfor %}  
+
+        
+
+        </main>
+
+
+{% endblock %}

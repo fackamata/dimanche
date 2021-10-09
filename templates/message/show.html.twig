@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+    <h1>Annonce : {{message.annonce}}</h1>
+    <section class="form-SAMM">  
+        <a class="btn btn-outline-info " href="javascript:history.back()">Retour</a>
+        <div class='d-flex flex-column align-items-center'>
+            <h2 class="my-2">{{ message.contenu }}</h2>
+        </div>
+        <div class="d-flex justify-content-around">
+            {% if repondre %}
+                <p>Message de : {{message.sender}}</p>
+            {% else %}
+            
+                <p>Envoyé à : {{message.destinataire}}</p>
+        
+            {% endif %}
+            <p>Envoyer le : {{ message.date ? message.date|date('d/m/Y H:i:s') : '' }}</p>
+    
+        </div>
+        {% if repondre %}
+                {# comme c'est une réponse, on inverse le sender et le destinataire(annoneUser) #}
+            <a class="btn btn-vert-creation_Samm" 
+            href="{{ path('message_new', {'idAnnonce': annonce.id, 'idAnnonceUser': sender.id, 'idMessageSender': destinataire.id }) }}">Répondre</a>
+        {% endif %}
+    </section>
+{% endblock %}

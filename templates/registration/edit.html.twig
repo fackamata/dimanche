@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification données utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modification données utilisateur</h1>
+
+    <div class="form-SAMM">
+        <a class="btn btn-outline-info " href="javascript:history.back()">Retour</a>
+
+        <div class="container">
+            {{ form_start(form)}} {# <form action="" method"> #}
+            <div class="row">
+                <div class="col-md-6">               
+                    {{form_row(form.username)}} {# le nom du champs #}                   
+                </div>
+                <div class="col-md-6">
+                    {# on peut préciser le label, les attribut (data-nb:, class:, ) ... #}
+                    {{form_row(form.prenom, {label: "Prénom",id:"idPrenom", attr: {class: 'classPrenom'} } ) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {# on peut préciser le label, les attribut (data-nb:, class:, ) ... #}
+                    {{form_row(form.nom, {label: "Nom"} ) }}
+                </div>
+                <div class="col-md-6">
+                    {{form_row(form.mail)}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{form_row(form.plainPassword)}}
+                </div>
+                
+                <div class="col-md-6">
+                    {{form_row(form.file)}}
+                </div>
+            </div>
+            
+            
+            {{ form_end(form)}} 
+        </div>
+    </div>
+    <a class= "btn btn-info my-2" href="{{ path('app_compte', {'id': user.id}) }}">Mon compte</a>
+{% endblock %}
